@@ -1,2 +1,2 @@
-import { handler } from '@/app/lib/agit uth'
+import { handler } from '@/app/lib/auth'
 export { handler as GET, handler as POST }
