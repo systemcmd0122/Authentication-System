@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 import prisma from '@/app/lib/prisma'
 
 //NextAuth設定
-export const authOptions: NextAuthOptions = {
+export const authOptions = {
     //Prismaを使うための設定
     adapter: PrismaAdapter(prisma),
     //認証プロバイダーの設定
@@ -59,6 +59,6 @@ export const authOptions: NextAuthOptions = {
         strategy: 'jwt',
     },
     secret: process.env.NEXTAUTH_SECRET
-}
+} satisfies NextAuthOptions
 
-export const handler = NextAuth(authOptions)
+export const { handler, auth, signIn, signOut } = NextAuth(authOptions)
